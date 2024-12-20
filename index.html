@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrendMag</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: #fafafa;
+      }
+
+      main {
+        flex: 1;
+      }
+
+      nav {
+        background-color: #1a1a1a;
+        padding: 1.2rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #ffd700;
+      }
+
+      .header {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+        color: white;
+        margin-bottom: 3rem;
+      }
+
+      .header h1 {
+        font-size: 4.5rem; /* Increased font size */
+        margin-bottom: 1rem;
+        letter-spacing: 2px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(45deg, #ffd700, #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .header p {
+        font-size: 1.3rem;
+        color: #ddd;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .featured {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        margin-top: 2rem;
+      }
+
+      .featured h2 {
+        margin-bottom: 2.5rem;
+        font-size: 2.2rem;
+        color: #1a1a1a;
+        text-align: center;
+        position: relative;
+      }
+
+      .featured h2:after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #ffd700;
+        margin: 15px auto 0;
+      }
+
+      .article-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+        padding: 1rem;
+      }
+
+      .article-card {
+        border: none;
+        padding: 1.5rem;
+        border-radius: 12px;
+        background: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .article-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1.2rem;
+      }
+
+      .article-card h3 {
+        margin: 1rem 0;
+        color: #1a1a1a;
+        font-size: 1.4rem;
+      }
+
+      .article-card p {
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+        color: #666;
+      }
+
+      .article-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .article-tag {
+        background: #f0f0f0;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        color: #333;
+      }
+
+      footer {
+        background-color: #1a1a1a;
+        color: white;
+        text-align: center;
+        padding: 2rem;
+        margin-top: auto;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 1.8rem;
+        background-color: #1a1a1a;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        margin-top: 1rem;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        border: 2px solid transparent;
+      }
+
+      .btn:hover {
+        background-color: transparent;
+        border: 2px solid #1a1a1a;
+        color: #1a1a1a;
+      }
+
+      /* Added subtle animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .article-card {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      .article-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .article-card:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+    </style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="subscribe.html">Subscribe</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <header class="header">
+      <h1>TrendMag</h1>
+      <p>Discover stories that inspire, inform, and entertain</p>
+    </header>
+
+    <main>
+      <section class="featured">
+        <h2>Featured Articles</h2>
+        <div class="article-grid">
+          <article class="article-card">
+            <img src="images/tech.jpg" alt="Technology" />
+            <div class="article-tag">Technology</div>
+            <h3>Latest Tech Trends</h3>
+            <p>
+              Explore the newest developments in technology and their impact on
+              our daily lives.
+            </p>
+            <div class="article-info">
+              <span>5 min read</span>
+              <span>•</span>
+              <span>By Aman Srivastava</span>
+            </div>
+            <a
+              href="https://www.simplilearn.com/top-technology-trends-and-jobs-article"
+              class="btn"
+              >Read More</a
+            >
+          </article>
+          <article class="article-card">
+            <img src="images/lifestyle.jpg" alt="Lifestyle" />
+            <div class="article-tag">Lifestyle</div>
+            <h3>Healthy Living</h3>
+            <p>
+              Tips and tricks for maintaining a balanced lifestyle in today's
+              fast-paced world.
+            </p>
+            <div class="article-info">
+              <span>4 min read</span>
+              <span>•</span>
+              <span>By Jane Smith</span>
+            </div>
+            <a
+              href="https://www.medicinenet.com/healthy_living/article.htm"
+              class="btn"
+              >Read More</a
+            >
+          </article>
+          <article class="article-card">
+            <img src="images/travel.jpg" alt="Travel" />
+            <div class="article-tag">Travel</div>
+            <h3>Travel Destinations</h3>
+            <p>
+              Discover the amazing hidden gems and popular destinations for your
+              next adventure.
+            </p>
+            <div class="article-info">
+              <span>6 min read</span>
+              <span>•</span>
+              <span>By Krish Gupta</span>
+            </div>
+            <a
+              href="https://travel.usnews.com/rankings/best-europe-vacations/"
+              class="btn"
+              >Read More</a
+            >
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        &copy; 2024 TrendMag. All rights reserved. Reach out to us for the
+        privacy policy.
+      </p>
+      <div class="social-media">
+        <a
+          href="https://www.facebook.com"
+          target="_blank"
+          aria-label="Facebook"
+        >
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.twitter.com" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com"
+          target="_blank"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </footer>
+
+
+  </body>
+</html>

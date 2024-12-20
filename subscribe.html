@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe - TrendMag</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="subscribe.html">Subscribe</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="header">
+        <h1>Subscribe to TrendMag</h1>
+        <p>Choose your perfect subscription plan</p>
+    </header>
+
+    <main class="container">
+        <div class="subscribe-options">
+            <div class="plan-card">
+                <h3>Basic Plan</h3>
+                <p class="price">$5/month</p>
+                <ul>
+                    <li>Access to basic articles</li>
+                    <li>Weekly newsletter</li>
+                    <li>Mobile app access</li>
+                </ul>
+            </div>
+            
+            <div class="plan-card">
+                <h3>Premium Plan</h3>
+                <p class="price">$10/month</p>
+                <ul>
+                    <li>Access to all articles</li>
+                    <li>Daily newsletter</li>
+                    <li>Mobile app access</li>
+                    <li>Exclusive content</li>
+                </ul>
+            </div>
+        </div>
+
+        <form id="subscribeForm" onsubmit="handleSubscribe(event)">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="plan">Select Plan</label>
+                <select id="plan" name="plan" required>
+                    <option value="">Choose a plan...</option>
+                    <option value="basic">Basic Plan ($5/month)</option>
+                    <option value="premium">Premium Plan ($10/month)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Subscribe Now</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 TrendMag. All rights reserved. Reach out to us for the privacy policy.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

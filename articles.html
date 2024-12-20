@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - TrendMag</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles specific to articles page */
+        .category-filter {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .category-btn {
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border: none;
+            border-radius: 4px;
+            background: #f4f4f4;
+            cursor: pointer;
+        }
+        
+        .category-btn.active {
+            background: #007bff;
+            color: white;
+        }
+        
+        .article-detail {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 1rem;
+            color: #666;
+        }
+        
+        .tag {
+            background: #e9ecef;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="subscribe.html">Subscribe</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="header">
+        <h1>Latest Articles</h1>
+        <p>Discover our curated content</p>
+    </header>
+
+    <main class="container">
+        <div class="category-filter">
+            <button class="category-btn active" onclick="filterArticles('all')">All</button>
+            <button class="category-btn" onclick="filterArticles('tech')">Technology</button>
+            <button class="category-btn" onclick="filterArticles('lifestyle')">Lifestyle</button>
+            <button class="category-btn" onclick="filterArticles('travel')">Travel</button>
+        </div>
+
+        <div class="article-grid">
+            <article class="article-card" data-category="tech">
+                <img src="images/tech-innovation.jpg" alt="Latest Tech Innovation">
+                <h3>The Future of AI Technology</h3>
+                <p>Exploring the latest developments in artificial intelligence and their impact on our daily lives.</p>
+                <div class="article-detail">
+                    <span class="tag">Technology</span>
+                    <span>5 min read</span>
+                </div>
+                <a href="https://builtin.com/artificial-intelligence/artificial-intelligence-future" class="btn">Read More</a>
+            </article>
+
+            <article class="article-card" data-category="lifestyle">
+                <img src="images/healthy-living.jpg" alt="Healthy Living Tips">
+                <h3>Mindful Living in 2024</h3>
+                <p>Simple practices to maintain mental and physical well-being in today's fast-paced world.</p>
+                <div class="article-detail">
+                    <span class="tag">Lifestyle</span>
+                    <span>4 min read</span>
+                </div>
+                <a href="https://www.ei-magazine.com/post/24-life-changing-principles-to-embrace-in-2024-a-holistic-guide-to-living-mindfully" class="btn">Read More</a>
+            </article>
+
+            <article class="article-card" data-category="travel">
+                <img src="images/travel-destinations.jpg" alt="Travel Destinations">
+                <h3>Hidden Gems of Europe</h3>
+                <p>Discover lesser-known but breathtaking destinations across European countries.</p>
+                <div class="article-detail">
+                    <span class="tag">Travel</span>
+                    <span>6 min read</span>
+                </div>
+                <a href="https://www.forbes.com/sites/laurabegleybloom/2024/04/30/ranked-the-18-best-hidden-gems-in-europe-according-to-a-new-report/" class="btn">Read More</a>
+            </article>
+
+            <!-- More articles... -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 TrendMag. All rights reserved. Reach out to us for the privacy policy. </p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function filterArticles(category) {
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(category)) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Filter articles
+            const articles = document.querySelectorAll('.article-card');
+            articles.forEach(article => {
+                if (category === 'all' || article.dataset.category === category) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
